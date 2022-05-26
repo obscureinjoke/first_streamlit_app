@@ -1,2 +1,2 @@
-import streamlit
-streamlit.title('My Parents New Healthy Diner')
+import streamlit as st
+st.write('SOMETHING SOMETHING.')
