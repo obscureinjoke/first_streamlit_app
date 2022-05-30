@@ -1,2 +1,6 @@
 import streamlit as st
-st.write('SOMETHING SOMETHING.')
+st.title('New Diner!')
+
+st.text('Menu')
+
+st.text('Food items!')
