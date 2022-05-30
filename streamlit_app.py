@@ -8,5 +8,6 @@ st.title('New Diner!')
 st.header('Menu')
 
 st.text('Food items!')
-st.multiselect("Pick some fruits!",list(my_fruit_list.index))
+fruits.selected=st.multiselect("Pick some fruits!",list(my_fruit_list.index), ['Avacados'],['Strawberries'])
+fruits_to_show=my_fruit_list.loc[fruits_selected]
 st.dataframe(my_fruit_list)
