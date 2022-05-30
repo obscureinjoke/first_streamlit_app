@@ -9,4 +9,4 @@ st.header('Menu')
 
 st.text('Food items!')
 
-streamlit.dataframe(my_fruit_list)
+streamlit.text(my_fruit_list)
