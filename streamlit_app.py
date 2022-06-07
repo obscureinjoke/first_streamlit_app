@@ -46,7 +46,7 @@ add_my_fruit=st.text_input('What fruit would you like to add?')
 if st.button('Add A Fruit To The List'):
   my_cnx=snowflake.connector.connect(**st.secrets["snowflake"])
   back_from_function=insert_row_snowflake(add_my_fruit)
-  st.text(back_from_function)
+  st.header(back_from_function)
   
  
 #my_fruit_list = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
