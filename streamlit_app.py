@@ -6,7 +6,7 @@ import snowflake.connector
 my_cnx=snowflake.connector.connect(**st.secrets["snowflake"])
 my_cur = my_cnx.cursor()
 my_cur.execute("SELECT * from fruit_load_list")
-got_row = my_cur.fetchone()
+got_row = my_cur.fetchall()
 st.header('List contains:')
 st.dataframe(got_row)
 #st.write(got_row)
