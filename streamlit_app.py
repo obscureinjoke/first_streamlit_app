@@ -21,7 +21,7 @@ my_fruit_list=my_fruit_list.set_index('Fruit')
 
 add_fruit=st.text_input('What fruit would you like to add?', 'jackfruit')
 bees="Hello"
-st.write(bees)
+st.write(str(bees))
 st.text(str(add_fruit))
 
 # st.title('New Diner!')
