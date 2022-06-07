@@ -8,20 +8,30 @@ my_cnx=snowflake.connector.connect(**st.secrets["snowflake"])
 my_cur = my_cnx.cursor()
 my_cur.execute("SELECT * from fruit_load_list")
 got_row = my_cur.fetchall()
-st.header('List contains:')
-st.dataframe(got_row)
+#st.header('List contains:')
+#st.dataframe(got_row)
 #st.write(got_row)
 
-my_fruit_list = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
-my_fruit_list=my_fruit_list.set_index('Fruit')
+st.header('Fruit advice!')
+try:
+  fruit_choice=st.text_input('What fruit would you like to know about?')
+  if not fruit_choice:
+    st.error("Please enter a type of fruit.")
+  else:
+    fruityvice_response=requests.get("https://fruityvice.com/api/fruit/"+fruit_choice)
+    fruityvice_normalised=pandas.json_normalize(fruityvice_response.json())
+    st.dataframe(fruityvice_normalised)
+    
+#my_fruit_list = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
+#my_fruit_list=my_fruit_list.set_index('Fruit')
 
 # get_fruit=st.text_input('What fruit would you like to know about?', 'Kiwi')
 # st.write('User entered ',get_fruit)
 # fruityvice_response=requests.get("https://fruityvice.com/api/fruit/"+get_fruit)
 # fruityvice_normalised=pandas.json_normalize(fruityvice_response.json())
 
-add_fruit=st.text_input('What fruit would you like to add?', 'jackfruit')
-st.header("User added "+add_fruit)
+#add_fruit=st.text_input('What fruit would you like to add?', 'jackfruit')
+#st.header("User added "+add_fruit)
 
 # st.title('New Diner!')
 
