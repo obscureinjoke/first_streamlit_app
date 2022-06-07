@@ -4,6 +4,12 @@ import requests
 import snowflake.connector
 from urllib.error import URLError
 
+def get_fruityvice_data(this_fruit_choice):
+  fruityvice_response=requests.get("https://fruityvice.com/api/fruit/"+fruit_choice)
+  fruityvice_normalised=pandas.json_normalize(fruityvice_response.json())
+  return fruityvice_normalised
+  
+
 my_cnx=snowflake.connector.connect(**st.secrets["snowflake"])
 my_cur = my_cnx.cursor()
 my_cur.execute("SELECT * from fruit_load_list")
@@ -12,15 +18,18 @@ got_row = my_cur.fetchall()
 #st.dataframe(got_row)
 #st.write(got_row)
 
+
 st.header('Fruit advice!')
 try:
   fruit_choice=st.text_input('What fruit would you like to know about?')
   if not fruit_choice:
     st.error("Please enter a type of fruit.")
   else:
-    fruityvice_response=requests.get("https://fruityvice.com/api/fruit/"+fruit_choice)
-    fruityvice_normalised=pandas.json_normalize(fruityvice_response.json())
-    st.dataframe(fruityvice_normalised)
+   # fruityvice_response=requests.get("https://fruityvice.com/api/fruit/"+fruit_choice)
+   # fruityvice_normalised=pandas.json_normalize(fruityvice_response.json())
+    back_from_function=get_fruityvice_data(fruit_choice)
+   # st.dataframe(fruityvice_normalised)
+    st.dataframe(back_from_function)
  
 except URLError as e:
   st.error()
