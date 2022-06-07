@@ -21,7 +21,9 @@ try:
     fruityvice_response=requests.get("https://fruityvice.com/api/fruit/"+fruit_choice)
     fruityvice_normalised=pandas.json_normalize(fruityvice_response.json())
     st.dataframe(fruityvice_normalised)
-    
+ 
+except URLError as e:
+  st.error()
 #my_fruit_list = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
 #my_fruit_list=my_fruit_list.set_index('Fruit')
 
