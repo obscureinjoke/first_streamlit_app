@@ -8,7 +8,7 @@ my_cur = my_cnx.cursor()
 my_cur.execute("SELECT * from fruit_load_list")
 got_row = my_cur.fetchone()
 st.text=('List contains')
-st.text(got_row)
+# st.text(got_row)
 
 # my_fruit_list = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
 # my_fruit_list=my_fruit_list.set_index('Fruit')
