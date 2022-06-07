@@ -3,6 +3,13 @@ import pandas
 import requests
 import snowflake.connector
 
+my_cnx=snowflake.connector.connect(**streamlit.secrets["snowflake"])
+my_cur=snowflake.connector.cursor()
+my_cur.execute("SELECT_CURRENT_USER(), CURRENT_ACCOUNT(),CURRENT_REGION()")
+my_data_row=my_cur.fetch_one()
+st.text=('Connection test')
+st.text(my_data_row)
+
 my_fruit_list = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
 my_fruit_list=my_fruit_list.set_index('Fruit')
 
