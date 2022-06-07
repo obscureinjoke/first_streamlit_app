@@ -8,7 +8,7 @@ my_cur = my_cnx.cursor()
 my_cur.execute("SELECT * from fruit_load_list")
 got_row = my_cur.fetchone()
 st.write=('List contains')
-st.write("Hello")
+st.write('Hello')
 #st.write(got_row)
 
 # my_fruit_list = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
