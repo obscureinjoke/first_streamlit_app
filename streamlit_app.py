@@ -11,6 +11,6 @@ st.header('Menu')
 
 st.text('Food items!')
 st.text(fruityvice_response)
-fruits_selected=st.multiselect("Pick some fruits!",list(my_fruit_list.index), ['Avocado'],['Strawberries'])
-fruits_to_show=my_fruit_list.loc[fruits_selected]
+//fruits_selected=st.multiselect("Pick some fruits!",list(my_fruit_list.index), ['Avocado'],['Strawberries'])
+//fruits_to_show=my_fruit_list.loc[fruits_selected]
 st.dataframe(fruits_to_show)
