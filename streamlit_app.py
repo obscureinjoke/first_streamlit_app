@@ -9,22 +9,11 @@ def get_fruityvice_data(this_fruit_choice):
   fruityvice_normalised=pandas.json_normalize(fruityvice_response.json())
   return fruityvice_normalised
   
-
-
-# my_cur = my_cnx.cursor()
-
-# st.header('List contains:')
-# st.dataframe(got_row)
-# st.write(got_row)
 def get_fruit_load_list():
   with my_cnx.cursor() as my_cur:
     my_cur.execute("SELECT * from fruit_load_list")
     return my_cur.fetchall()
 
-if st.button('Get Fruit Load List'):
-  my_cnx=snowflake.connector.connect(**st.secrets["snowflake"])
-  my_data_rows=get_fruit_load_list()
-  st.dataframe(my_data_rows)
 
 
 st.header('Fruit advice!')
@@ -41,6 +30,13 @@ try:
  
 except URLError as e:
   st.error()
+  
+
+if st.button('Get Fruit Load List'):
+  my_cnx=snowflake.connector.connect(**st.secrets["snowflake"])
+  my_data_rows=get_fruit_load_list()
+  st.dataframe(my_data_rows)
+ 
 #my_fruit_list = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
 #my_fruit_list=my_fruit_list.set_index('Fruit')
 
